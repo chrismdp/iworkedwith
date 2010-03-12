@@ -1,0 +1,9 @@
+*.log
+tmp/*
+*.sqlite3
+config/database.yml
+.DS_STORE
+webrat*
+coverage/*
+coverage.data
+restart.txt
