@@ -7,3 +7,4 @@ webrat*
 coverage/*
 coverage.data
 restart.txt
+rerun.txt
