@@ -1,0 +1,12 @@
+- semantic_form_for :link, :url => user_links_path(@user)  do |form|
+  - form.inputs do
+    = form.input :person_2_id, :label => 'Person 2'
+  - form.buttons do
+    = form.commit_button :label => 'Link'
+
+
+%h2 Links
+%ul
+- @links.each do |link|
+  %li=link.person_2.email
+  

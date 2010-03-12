@@ -11,12 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     
-    # Add more mappings here.
-    # Here is a more fancy example:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+    when /the links page for "([^"]*)"/
+      user = User.find_by_email($1)
+      user_links_path(user)
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"
