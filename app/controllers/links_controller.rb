@@ -5,8 +5,10 @@ class LinksController < ResourceController::Base
   end
 private
   def build_object
-    p params[:link]
-    new_user = User.find_by_email(params[:link][:person_2_id])
-    @object ||= end_of_association_chain.build(:person_2_id => new_user.id, :comment => params[:link][:comment])
+    link = params[:link]
+    @object ||= link_user_to(link[:person_2_id], link[:comment])
+  end
+  def link_user_to(this_person, comment)
+    end_of_association_chain.build(:comment => comment, :person_2 => User.find_by_email(this_person))
   end
 end
