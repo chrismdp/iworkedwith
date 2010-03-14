@@ -1,20 +1,18 @@
-When /^I make a link to "([^\"]*)"$/ do |person|
-  fill_in 'Person 2', :with => person
-  click_button "Link"
+Transform /table:email,comment/ do |table|
+  link_info = table.hashes.first 
+  return link_info[:email], link_info[:comment]
 end
 
-Then /^I should see a connection to "([^\"]*)"$/ do |person|
-  response.should contain(person)
-end
-
-When /^I make a link to "([^\"]*)" with$/ do |person, comment|
-  fill_in 'Person 2', :with => person
+When /^I say I worked with someone$/ do |table|
+  email, comment = table
+  fill_in 'Person 2', :with => email
   fill_in 'Comment', :with => comment
-  click_button "Link"
+  click_button 'Link'
 end
 
-Then /^I should see a connection to "([^\"]*)" with$/ do |person, comment|
-  response.should contain(person)
+Then /^I should see I worked with$/ do |table|
+  email, comment = table
+  response.should contain(email)
   response.should contain(comment)
 end
 
