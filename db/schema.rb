@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20100312153834) do
   create_table "links", :force => true do |t|
     t.integer  "person_1_id"
     t.integer  "person_2_id"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

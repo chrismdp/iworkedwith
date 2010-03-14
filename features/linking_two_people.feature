@@ -10,3 +10,17 @@ Feature: Linking two people
     When I make a link to "chrismdp@gmail.com"
     Then I should be on the links page for "coreyhaines@gmail.com"
     Then I should see a connection to "chrismdp@gmail.com"
+
+  Scenario: Adding a comment for a link
+    Given a user "coreyhaines@gmail.com"
+    And a user "chrismdp@gmail.com"
+    And I am on the links page for "coreyhaines@gmail.com"
+    When I make a link to "chrismdp@gmail.com" with
+      """
+      This was an awesome pairing session
+      """
+    Then I should be on the links page for "coreyhaines@gmail.com"
+    Then I should see a connection to "chrismdp@gmail.com" with
+      """
+      This was an awesome pairing session
+      """
